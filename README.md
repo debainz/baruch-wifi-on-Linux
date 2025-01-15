@@ -19,7 +19,7 @@ Here's how to Configure Baruch Main WiFi and eduroam to work on Linux*
     - CA cert: not in use
     - PEAP V: Automatic
     - Inner Auth: MSCHAPv2
-<img src="https://github.com/debainz/baruch-wifi-on-Linux/blob/main/img/baruch-main-kde.png" width=50% height=50%>
+    <img src="https://github.com/debainz/baruch-wifi-on-Linux/blob/main/img/baruch-main-kde.png" width=50% height=50%>
 3. Username and password are the same as the login for the printer portal, and can be reset via [mypassword.baruch.cuny.edu](https://mypassword.baruch.cuny.edu). Username follows the format of: firstinitial.lastname+(last 2 digits of SSN).
     - Ex: j.doe12
 
@@ -38,7 +38,7 @@ Here's how to Configure Baruch Main WiFi and eduroam to work on Linux*
     - Auth: TTLS
     - Anon identity: anon@login.cuny.edu
     - Inner Auth: PAP
-<img src="https://github.com/debainz/baruch-wifi-on-Linux/blob/main/img/eduroam-kde.png" width=50% height=50%>
+    <img src="https://github.com/debainz/baruch-wifi-on-Linux/blob/main/img/eduroam-kde.png" width=50% height=50%>
 3. Username and password are the same as CUNY SSO (used for services like CUNYFirst, SB, Degreeworks, etc.). Username follows the format of firstname.lastname+(last 2 digits of EMPLID)@login.cuny.edu.
     - Ex. john.doe12@login.cuny.edu
 4. For the CA cert, a copy of it has been provided in this repo for your convenience under the name eduroam-ca-certificate.pem. Keep this certificate in the same directory all other certificates are normally kept, in /etc/ssl/certs/ in your root directory. Link to this in the CA certificate section, and everything should work.
@@ -54,11 +54,13 @@ eduroam seems to be the finickiest out of the 2, so if you run into issues, here
 2. Open the installer with your preferred code editor (it should still just be a Python file). Ignore all other code, except for the bottom-most portion starting at "Config.instname" (~ line 1231).
 3. Troubleshoot the configuration:
     - Look at **Config.eap_outer**, **Config.eap_inner**, and **Config.anonymous_identity**. If these are different than the ones inputted, use the ones stated in the installation file.
-<img src="https://github.com/debainz/baruch-wifi-on-Linux/blob/main/img/eduroam-config.png" width=50% height=50%>
+
+    <img src="https://github.com/debainz/baruch-wifi-on-Linux/blob/main/img/eduroam-config.png" width=50% height=50%>
 4. Troubleshoot the CA cert:
     - Look at **Config.CA**. If it is different, copy the content inside the quotes, and overwrite the contents inside the .pem file.
     - I am not sure how often they replace these keys, it shouldn't be often as they affect quite a lot of things. A couple sources I've seen is usually around 20-30 years, but I do not know how Baruch handles this.
-<img src="https://github.com/debainz/baruch-wifi-on-Linux/blob/main/img/eduroam-ca-contents.png" width=50% height=50%>
+
+    <img src="https://github.com/debainz/baruch-wifi-on-Linux/blob/main/img/eduroam-ca-contents.png" width=50% height=50%>
 
 Hopefully this documentation proved helpful, this was one of the major pain points that prevented me from daily-driving NixOS (or your preferred distribution) from sophomore year. Now that this is solved, I can finally make more progress of fully daily-driving NixOS, and I hope you do the same.
 
