@@ -19,6 +19,7 @@ Here's how to Configure Baruch Main WiFi and eduroam to work on Linux*
     - CA cert: not in use
     - PEAP V: Automatic
     - Inner Auth: MSCHAPv2
+![baruch-main](img/baruch-main-kde.png)
 3. Username and password are the same as the login for the printer portal, and can be reset via [mypassword.baruch.cuny.edu](https://www.mypassword.baruch.cuny.edu). Username follows the format of: firstinitial.lastname+(last 2 digits of SSN).
     - Ex: j.doe12
 
