@@ -14,11 +14,11 @@ Here's how to Configure Baruch Main WiFi and eduroam to work on Linux*
 ### On KDE:
 1. Default configuration on most will be kept.
 2. Just double check that under the Wi-Fi tab, mode is set as **Infrastructure** with everything else being unchecked or blank, and the following is set under Wi-Fi Security:
-  - Security: WPA/WPA2 Enterprise
-  - Auth: PEAP
-  - CA cert: not in use
-  - PEAP V: Automatic
-  - Inner Auth: MSCHAPv2
+    - Security: WPA/WPA2 Enterprise
+    - Auth: PEAP
+    - CA cert: not in use
+    - PEAP V: Automatic
+    - Inner Auth: MSCHAPv2
 3. Username and password are the same as the login for the printer portal, and can be reset via [mypassword.baruch.cuny.edu](https://www.mypassword.baruch.cuny.edu). Username follows the format of: (firstinitial).(lastname)(last 2 digits of SSN).
 
 ### On GNOME:
@@ -32,10 +32,10 @@ Here's how to Configure Baruch Main WiFi and eduroam to work on Linux*
 ### On KDE:
 1. Wi-Fi tab default config will be kept, similar to Baruch Main.
 2. Under Wi-Fi Security tab, use the following configuration:
-  - Security: WPA/WPA2 Enterprise
-  - Auth: TTLS
-  - Anon identity: anon@login.cuny.edu
-  - Inner Auth: PAP
+    - Security: WPA/WPA2 Enterprise
+    - Auth: TTLS
+    - Anon identity: anon@login.cuny.edu
+    - Inner Auth: PAP
 3. Username and password are the same as CUNY SSO (used for services like CUNYFirst, SB, Degreeworks, etc.).
 4. For the CA cert, a copy of it has been provided in this repo for your convenience under the name eduroam-ca-certificate.pem. Keep this certificate in the same directory all other certificates are normally kept, in /etc/ssl/certs/ in your root directory. Link to this in the CA certificate section, and everything should work.
 
@@ -49,10 +49,10 @@ eduroam seems to be the finickiest out of the 2, so if you run into issues, here
 1. Go to cat.eduroam.org and download the Linux installer for Baruch. The latest one at the time of writing has been provided in this repo for your convenience, but always check to see if the website has an even more up-to-date one.
 2. Open the installer with your preferred code editor (it should still just be a Python file). Ignore all other code, except for the bottom-most portion starting at "Config.instname" (~ line 1231).
 3. Troubleshoot the configuration:
-  - Look at **Config.eap_outer**, **Config.eap_inner**, and **Config.anonymous_identity**. If these are different than the ones inputted, use the ones stated in the installation file.
+    - Look at **Config.eap_outer**, **Config.eap_inner**, and **Config.anonymous_identity**. If these are different than the ones inputted, use the ones stated in the installation file.
 4. Troubleshoot the CA cert:
-  - Look at **Config.CA**. If it is different, copy the content inside the quotes, and overwrite the contents inside the .pem file.
-  - I am not sure how often they replace these keys, it shouldn't be often as they affect quite a lot of things. A couple sources I've seen is usually around 20-30 years, but I do not know how Baruch handles this.
+    - Look at **Config.CA**. If it is different, copy the content inside the quotes, and overwrite the contents inside the .pem file.
+    - I am not sure how often they replace these keys, it shouldn't be often as they affect quite a lot of things. A couple sources I've seen is usually around 20-30 years, but I do not know how Baruch handles this.
 
 Hopefully this documentation proved helpful, this was one of the major pain points that prevented me from daily-driving NixOS (or your preferred distribution) from sophomore year. Now that this is solved, I can finally make more progress of fully daily-driving NixOS, and I hope you do the same.
 
