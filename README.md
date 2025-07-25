@@ -1,15 +1,31 @@
-# baruch-wifi-on-Linux
-Getting Baruch Main WiFi and eduroam working on Linux*
+<h1 id="header" align="center">
+  baruch-wifi-on-Linux
+</h1>
+
+<div align="center">
+  Getting Baruch Main WiFi and eduroam working on Linux*
+</div>
+
+<div align="center">
+  <br/>
+  <a href="#baruch-main-wifi-ssid-baruch">Main WiFi</a> | <a href="#eduroam-ssid-eduroam">Eduroam</a><br/>
+  <a href="#non-kde-gnome-users">Non-KDE/Gnome Guide</a>
+  <br/>
+</div>
+
+## Introduction
 
 Hi, 
 
-First time actually publishing a possibly useful repo out into the world, so if there's anything I need to change or improve upon, let me know.
+This repository is intended for the Linux users at Bernard M. Baruch College,
+serving as a guide for connecting to the WiFi of the campus.
 
-Here's how to Configure Baruch Main WiFi and eduroam to work on Linux*
+First time actually publishing a possibly useful repo out into the world.
+So if there's anything I need to change or improve upon, let me know.
 
-###### *The asterisk here refers to it only being tested on NixOS (my current distribution of choice) and Debian (u/Common_Grand8538 who prompted me to test and make this repo happen). All other distributions at the moment are unconfirmed. I will keep this updated if and when people reach out to me with a confirmed test or if a pull request is made. Also, both tests were made in a gui, KDE for me, and GNOME for u/Common_Grand8538, so the instructions reflect that. It's very likely possible for it to be done purely in CLI, but it's unconfirmed.
+[//]: # "The asterisk was deleted because the universal solution has been included"
 
-## Baruch Main WiFi (SSID <u>**Baruch**</u>)
+## Baruch Main WiFi ( SSID Baruch )
 ###### (Works well with personal DNS preferences)
 ### On KDE:
 1. Default configuration on most will be kept.
@@ -27,7 +43,7 @@ Here's how to Configure Baruch Main WiFi and eduroam to work on Linux*
 
 
 
-## eduroam (SSID <u>**eduroam**</u>)
+## eduroam (SSID eduroam)
 ###### (One of the main benefits of eduroam is that it's a worldwide system. As long as an institution is in collobration with eduroam, and you spot this SSID at another institution, this login should be exactly the same and work as normal. Also seems to be faster than Baruch Main. But the downside is that it uses TTLS PAP, which is generally considered to be a bit weaker than PEAP MSCHAPv2, so make of that what you will. Baruch's implementation uses TTLS PAP, but there are references in the installer for compatability with other methods, so it is possible that config may need to be altered, have not tested it with Linux but the universality of eduroam has been proven to work on other OS.)
 ###### (Does not work well with personal DNS prefernces, must insert DNS preferences elsewhere, such as in browser)
 
@@ -70,6 +86,12 @@ On NixOS this package is name [`networkmanagerapplet`](https://github.com/NixOS/
 This package should be widely availiable across most of the distros, search for your own package repository if you are not using the above distributions.
 
 After you have the package installed, launch it and follow the KDE section of [Main WiFi](#on-kde) and [Eduroam](#on-kde-1) to proceed.
+
+## Attributions
+
+[Arch Wiki]: https://wiki.archlinux.org/title/NetworkManager
+
+Appreciations to the [Arch Wiki] for the information on a universal solution to this guide.
 
 Hopefully this documentation proved helpful, this was one of the major pain points that prevented me from daily-driving NixOS (or your preferred distribution) from sophomore year. Now that this is solved, I can finally make more progress of fully daily-driving NixOS, and I hope you do the same.
 
