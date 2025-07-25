@@ -69,7 +69,7 @@ On Arch Linux this package is named `network-manager-applet` which can be found 
 On NixOS this package is name [`networkmanagerapplet`](https://github.com/NixOS/nixpkgs/blob/fe51d34885f7b5e3e7b59572796e1bcb427eccb1/pkgs/by-name/ne/networkmanagerapplet/package.nix#L88).
 This package should be widely availiable across most of the distros, search for your own package repository if you are not using the above distributions.
 
-After you have the package installed, launch it and follow the KDE section of [Main WiFi](#on-kde-1) and [Eduroam](#on-kde-2) to proceed.
+After you have the package installed, launch it and follow the KDE section of [Main WiFi](#on-kde) and [Eduroam](#on-kde-1) to proceed.
 
 Hopefully this documentation proved helpful, this was one of the major pain points that prevented me from daily-driving NixOS (or your preferred distribution) from sophomore year. Now that this is solved, I can finally make more progress of fully daily-driving NixOS, and I hope you do the same.
 
