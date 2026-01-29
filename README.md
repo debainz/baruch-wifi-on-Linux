@@ -71,5 +71,24 @@ This package should be widely availiable across most of the distros, search for 
 
 After you have the package installed, launch it and follow the KDE section of [Main WiFi](#on-kde) and [Eduroam](#on-kde-1) to proceed.
 
+Or if you're using a non-kde or gnome, and are using networkManager to handle your network connections, you can run this one shot command to make a networkManager connection profile (be sure to insert your own username and password, path to the ca-certificate, and tweak autoconnect settings as needed):
+```shell
+nmcli connection add \
+  type wifi \
+  con-name "eduroam" \
+  iname "*" \
+  ssid "eduroam" \
+  autoconnect yes \
+  connection.autoconnect-priority 9 \
+  802-11-wireless.mode infrastructure \
+  802-1x.eap ttls \
+  802-1x.phase2-auth pap \
+  802-1x.anonymous-identity "anon@login.cuny.edu" \
+  802-1x.identity "$eduroam_ID" 1
+  802-1x.password "$eduroam_PW" \
+  802-1x.ca-cert "/path/to/eduroam-ca-certificate.pem" \
+  wifi-sec.key-mgmt wpa-eap
+```
+
 Hopefully this documentation proved helpful, this was one of the major pain points that prevented me from daily-driving NixOS (or your preferred distribution) from sophomore year. Now that this is solved, I can finally make more progress of fully daily-driving NixOS, and I hope you do the same.
 
