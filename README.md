@@ -23,10 +23,6 @@ Here's how to Configure Baruch Main WiFi and eduroam to work on Linux*
 3. Username and password are the same as the login for the printer portal, and can be reset via [mypassword.baruch.cuny.edu](https://mypassword.baruch.cuny.edu). Username follows the format of: firstinitial.lastname+(last 2 digits of SSN).
     - Ex: j.doe12
 
-### On GNOME:
-
-
-
 ## eduroam (SSID <u>**eduroam**</u>)
 ###### (One of the main benefits of eduroam is that it's a worldwide system. As long as an institution is in collobration with eduroam, and you spot this SSID at another institution, this login should be exactly the same and work as normal. Also seems to be faster than Baruch Main. But the downside is that it uses TTLS PAP, which is generally considered to be a bit weaker than PEAP MSCHAPv2, so make of that what you will. Baruch's implementation uses TTLS PAP, but there are references in the installer for compatability with other methods, so it is possible that config may need to be altered, have not tested it with Linux but the universality of eduroam has been proven to work on other OS.)
 ###### (Does not work well with personal DNS prefernces, must insert DNS preferences elsewhere, such as in browser)
@@ -43,10 +39,6 @@ Here's how to Configure Baruch Main WiFi and eduroam to work on Linux*
     - Ex. john.doe12@login.cuny.edu
 4. For the CA cert, a copy of it has been provided in this repo for your convenience under the name eduroam-ca-certificate.pem. Keep this certificate in the same directory all other certificates are normally kept, in /etc/ssl/certs/ in your root directory. Link to this in the CA certificate section, and everything should work.
 
-### On GNOME:
-
-
-
 ### Troubleshooting eduroam:
 eduroam seems to be the finickiest out of the 2, so if you run into issues, here are some steps you can take.
 
@@ -62,7 +54,7 @@ eduroam seems to be the finickiest out of the 2, so if you run into issues, here
 
     <img src="https://github.com/debainz/baruch-wifi-on-Linux/blob/main/img/eduroam-ca-contents.png" width=50% height=50%>
 
-## Non-KDE/GNOME Users:
+## GNOME Users:
 Some of you may not be using desktop environments that comes with the tools. Thus in this section we will go with the package [networkmanagerapplet](https://gitlab.gnome.org/GNOME/network-manager-applet/) from Gnome.
 
 On Arch Linux this package is named `network-manager-applet` which can be found in the [AUR](https://archlinux.org/packages/?name=network-manager-applet).
@@ -71,7 +63,8 @@ This package should be widely availiable across most of the distros, search for 
 
 After you have the package installed, launch it and follow the KDE section of [Main WiFi](#on-kde) and [Eduroam](#on-kde-1) to proceed.
 
-Or if you're using a non-kde or gnome, and are using networkManager to handle your network connections, you can run this one shot command to make a networkManager connection profile (be sure to insert your own username and password, path to the ca-certificate, and tweak autoconnect settings as needed):
+## Non-KDE/Non-GNOME Users:
+If you're not using neither KDE nor GNOME, and are using networkManager to handle your network connections, you can run this one shot command to make a networkManager connection profile (**be sure to insert your own username and password, path to the ca-certificate, and tweak autoconnect settings as needed**):
 ```shell
 nmcli connection add \
   type wifi \
@@ -84,9 +77,25 @@ nmcli connection add \
   802-1x.eap ttls \
   802-1x.phase2-auth pap \
   802-1x.anonymous-identity "anon@login.cuny.edu" \
-  802-1x.identity "$eduroam_ID" 1
-  802-1x.password "$eduroam_PW" \
+  802-1x.identity "userID" \
+  802-1x.password "userPW" \
   802-1x.ca-cert "/path/to/eduroam-ca-certificate.pem" \
+  wifi-sec.key-mgmt wpa-eap
+```
+
+```shell
+nmcli connection add \
+  type wifi \
+  con-name "Baruch" \
+  iname "*" \
+  ssid "Baruch" \
+  autoconnect yes \
+  connection.autoconnect-priority 9 \
+  802-11-wireless.mode infrastructure \
+  802-1x.eap eap \
+  802-1x.phase2-auth mschapv2 \
+  802-1x.identity "userID" \
+  802-1x.password "userPW" \
   wifi-sec.key-mgmt wpa-eap
 ```
 
